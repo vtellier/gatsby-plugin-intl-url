@@ -1,7 +1,7 @@
 {
     "name": "gatsby-plugin-intl-url",
     "description": "Minimalist plugin to internationalize the urls of a Gatsby website in a seo-friendly way. It puts all the pages under localized sub trees, ex.: `/en/hello` ; `/fr/bonjour`",
-    "version": "0.1.1",
+    "version": "1.0.0",
     "author": "Vincent Tellier @vtellier",
     "bugs": {
         "url": "https://github.com/vtellier/gatsby-plugin-intl-url/issues"

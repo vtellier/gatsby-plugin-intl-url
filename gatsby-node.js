@@ -4,7 +4,7 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-exports.onCreatePage = require('./on-create-page.js');
+exports.onCreatePage = require('./src/on-create-page.js');
 exports.onCreateNode = ({ node, actions }) => {
 };
 
