@@ -1,0 +1,29 @@
+{
+    "name": "gatsby-plugin-i18n-url",
+    "description": "Minimalist plugin to internationalize the urls of a Gatsby website in a seo-friendly way. It puts all the pages under localized sub trees, ex.: `/en/hello` ; `/fr/bonjour`",
+    "version": "1.0.0",
+    "author": "Vincent Tellier @vtellier",
+    "bugs": {
+        "url": "https://github.com/vtellier/gatsby-plugin-i18n-url/issues"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "gatbsy",
+        "gatsby-plugin",
+        "i18n", "intl",
+        "translation",
+        "internationalization",
+        "slug", "slugs",
+        "path", "paths",
+        "url", "seo",
+        "canonical url"
+    ],
+    "license": "ISC",
+    "dependencies": {
+        "ietf-language-tag-regex": "0.0.5"
+    },
+    "repository": "https://github.com/vtellier/gatsby-plugin-i18n-url",
+    "homepage": "https://github.com/vtellier/gatsby-plugin-i18n-url"
+}
