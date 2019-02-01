@@ -24,12 +24,29 @@ It injects the [locale code][3] of your pages in the base path of the URL, your 
 - The paths are translated in the language of the page using the translations files you edit,
   _see the locale.[lang].json_ section.
 
+## Configuration
+
+```.json
+{
+    resolve: `gatsby-plugin-intl-url`,
+    options: {
+        defaultLanguage: 'fr',
+        translationFile: 'src/locale.json'
+    }
+}
+```
+
+- **defaultLanguage** _optional_: the default language chosen by the plugin if the language code is missing from your
+  path. Defaults to `en`
+- **translationFile** _optional_: the path to your path translation json file, defaults to `src/locale.json`
+
 ## API
 
 - The plugin takes as input all the pages of the project  
   _Nb: The pages might have been tranformed before with a markup transformer like [gatsby-transformer-remark][2]_
 - The language code of each page by extracted from the path: `/path/to/my/file.html.en` provides the `en` code.  
-  If the pattern does not maches, the page will be treated as written in the **default language**.
+  - If the pattern does not maches, the page will be treated as written in the **default language**.
+  - If the page file name is **index**, the path will stop at the folder level
 - As output, it transforms the path of the pages and inject context variables as the next table describes  
 
 | Path        | New path        | context.locale   | context.canonical    | context.slug     | context.pathRegex    |
@@ -40,13 +57,24 @@ It injects the [locale code][3] of your pages in the base path of the URL, your 
 | /index.no   | /no             | no               | null                 | /                | //                   |
 | /index.en   | / **and** /en   | en (default)     | en **and** null      | /                | //                   |
 
-- Each item of the path is translated using the `src/locale.[lang].json` file  
+- Each item of the path is translated using the **translation file**
   _Ex: `/my/path.html` is exploded as `['my','path.html']`, and every string of this array will be translated
-  in french using `src/locale.fr.json` file_
+  in french using `src/locale.json` file_
 
-### locale.[lang].json
+### Context property injection
 
-This file is located at `src/locale.[lang].json` and must be structured as follows:
+After handled by the plugin, the page's context have been injected with the following properties:
+- **locale:** The language tag indentifying the language of the page.
+- **canonical:** The canonical link to the page, if the current one has not the canonical path itself, null otherwise.
+  This is usefull to indicate the search engines which link should be
+  registered for the index pages.
+- **slug:** This is the relative path of your page without any indication of the language. It should be written in the
+  default language ~~so that you can translate it~~ (feature not implemented yet).
+- **pathRegex:** A regular expression containing your the slug for you to filter easily in GraphQL.
+
+### Paths translation file
+
+This file must be structured as follows:
 ```.json
 {
     "slugs": {
@@ -67,21 +95,6 @@ This file would enable to translate the following paths:
 | /boats/sailboat/mono-hull  | /bateaux/voilier/mono-coque  |
 | /boats/sailboat/multi-hull | /bateaux/voilier/multi-coque |
 
-
-### Workflow
-
-The plugin is listening to the page creation events **[onCreatePage](https://www.gatsbyjs.org/docs/node-apis/#onCreatePage)**
-
-### Context property injection
-
-After handled by the plugin, the page's context have been injected with the following properties:
-- **locale:** The language tag indentifying the language of the page.
-- **canonical:** The canonical link to the page, if the current one has not the canonical path itself, null otherwise.
-  This is usefull to indicate the search engines which link should be
-  registered for the index pages.
-- **slug:** This is the relative path of your page without any indication of the language. It should be written in the
-  default language ~~so that you can translate it~~ (feature not implemented yet).
-- **pathRegex:** A regular expression containing your the slug for you to filter easily in GraphQL.
 
 ### Handling the index pages
 

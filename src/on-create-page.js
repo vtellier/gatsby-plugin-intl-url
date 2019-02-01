@@ -6,7 +6,8 @@ const PathFinder = require('./PathFinder');
 // By surveying the pages' creation, we'll intercept the indexes so that we
 // can redirect them to their internationalized path
 module.exports = ({ page, actions }, pluginOptions) => {
-    const { createPage, deletePage } = actions
+    const { createPage, deletePage } = actions;
+    const translationFile = pluginOptions.translationFile || 'src/locale.json'
 
     return new Promise(async resolve => {
         //translations = await getTranslations();
@@ -17,8 +18,11 @@ module.exports = ({ page, actions }, pluginOptions) => {
 
         const locale = pf.getLocale();
         if(locale !== pluginOptions.defaultLanguage){
-            let translations = require(path.resolve(`src/locale.${locale}.json`));
-            pf.translate(translations);
+            let translations = require(path.resolve(translationFile));
+            if(translations[locale])
+                pf.translate(translations[locale]);
+            else
+                console.warn(`Your translation file misses the ${locale} language: ${translationFile}`);
         }
 
         deletePage(oldPage);
