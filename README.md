@@ -77,12 +77,14 @@ After handled by the plugin, the page's context have been injected with the foll
 This file must be structured as follows:
 ```.json
 {
-    "slugs": {
-        "boats": "bateaux",
-        "mono-hull": "mono-coque",
-        "multi-hull": "multi-coque",
-        "sailboat": "voilier",
-        "motorboat": "bateau-a-moteur",
+    "fr": {
+        "slugs": {
+            "boats": "bateaux",
+            "mono-hull": "mono-coque",
+            "multi-hull": "multi-coque",
+            "sailboat": "voilier",
+            "motorboat": "bateau-a-moteur",
+        }
     }
 }
 ```
