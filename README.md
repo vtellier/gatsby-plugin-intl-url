@@ -19,16 +19,19 @@ It injects the [locale code][3] of your pages in the base path of the URL, your 
 > www.example.com**/fr**/hello  
 > www.example.com/ _deliver the same content as the **default language**_
 
-The language code is provided in the path of the pages.  
-The paths are translated in the language of the page using the translations files you edit.
+- You have to provide the language in the path of the pages like `/this/is/my-page.html.fr`
+  for the french version.  
+- The paths are translated in the language of the page using the translations files you edit,
+  _see the locale.[lang].json_ section.
 
 ## API
 
-1. The plugin takes as input all the pages of the project  
-   _Nb: The pages might have been tranformed before with a markup transformer like [gatsby-transformer-remark][2]_
-1. The language code of each page by extracted from the path: `/path/to/my/file.html.en` provides the `en` code.  
-   If the pattern does not maches, the page will be treated as written in the **default language**.
-1. As output, it transforms the path of the pages and inject context variables as the next table describes:
+- The plugin takes as input all the pages of the project  
+  _Nb: The pages might have been tranformed before with a markup transformer like [gatsby-transformer-remark][2]_
+- The language code of each page by extracted from the path: `/path/to/my/file.html.en` provides the `en` code.  
+  If the pattern does not maches, the page will be treated as written in the **default language**.
+- As output, it transforms the path of the pages and inject context variables as the next table describes  
+
 | Path        | New path        | context.locale   | context.canonical    | context.slug     | context.pathRegex    |
 | ----------- | --------------- | ---------------- | -------------------- | ---------------- | -------------------- |
 | /a/b.fr     | /fr/a/b         | fr               | null                 | /a/b             | /a/b/                |
@@ -36,9 +39,10 @@ The paths are translated in the language of the page using the translations file
 | /a.html.es  | /es/a.html      | es               | null                 | /a.html          | /a.html/             |
 | /index.no   | /no             | no               | null                 | /                | //                   |
 | /index.en   | / **and** /en   | en (default)     | en **and** null      | /                | //                   |
-1. Each item of the path is translated using the `src/locale.[lang].json` file  
-   _Ex: `/my/path.html` is exploded as `['my','path.html']`, and every string of this array will be translated
-   in french using `src/locale.fr.json` file_
+
+- Each item of the path is translated using the `src/locale.[lang].json` file  
+  _Ex: `/my/path.html` is exploded as `['my','path.html']`, and every string of this array will be translated
+  in french using `src/locale.fr.json` file_
 
 ### locale.[lang].json
 
@@ -56,6 +60,7 @@ This file is located at `src/locale.[lang].json` and must be structured as follo
 ```
 
 This file would enable to translate the following paths:
+
 | Path                       | Translated                   |
 | -------------------------- | ---------------------------- |
 | /boats/motorboat           | /bateaux/bateau-a-moteur     |
