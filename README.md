@@ -120,3 +120,4 @@ Please help me improve this project, feel free to ask, suggest or send your pull
 [1]: gatsbyjs.org
 [2]: https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-transformer-remark
 [3]: https://formatjs.io/guides/basic-i18n/#locales
+
