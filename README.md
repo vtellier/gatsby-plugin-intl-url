@@ -64,7 +64,6 @@ It injects the [locale code][3] of your pages in the base path of the URL, your 
 ### Context property injection
 
 After handled by the plugin, the page's context have been injected with the following properties:
-
 - **locale:** The language tag indentifying the language of the page.
 - **canonical:** The canonical link to the page, if the current one has not the canonical path itself, null otherwise.
   This is usefull to indicate the search engines which link should be
@@ -76,7 +75,6 @@ After handled by the plugin, the page's context have been injected with the foll
 ### Paths translation file
 
 This file must be structured as follows:
-
 ```json
 {
     "fr": {
@@ -99,6 +97,7 @@ This file would enable to translate the following paths:
 | /boats/sailboat/mono-hull  | /bateaux/voilier/mono-coque  |
 | /boats/sailboat/multi-hull | /bateaux/voilier/multi-coque |
 
+
 ### Handling the index pages
 
 A website _www.example.com_ will have an index page translated in several languages availables at their specific URLs.
@@ -109,13 +108,14 @@ _www.example.com/no_.
 To handle this case, the plugin will general two pages with two different URLs, one will be the preferred one
 ie. the **canonical**, and the other the non canonical.  
 As of today, this choice isn't configurable and it behaves like so:
-
 - _www.example.com/no_ is canonical
 - _www.example.com/_ is **not** canonical
 
 ## Contribution
 
-Please help me improve this project, feel free to ask, suggest or send your pull requests. You can directly [contact me on Twitter](https://twitter.com/vtellier).
+Please help me improve this project, feel free to ask, suggest or send your pull requests. You can directly 
+[contact me on Twitter](https://twitter.com/vtellier).
+
 
 [1]: gatsbyjs.org
 [2]: https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-transformer-remark
