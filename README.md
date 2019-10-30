@@ -75,7 +75,7 @@ After handled by the plugin, the page's context have been injected with the foll
 ### Paths translation file
 
 This file must be structured as follows:
-```.json
+```json
 {
     "fr": {
         "slugs": {
