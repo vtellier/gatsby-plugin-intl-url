@@ -26,7 +26,7 @@ It injects the [locale code][3] of your pages in the base path of the URL, your 
 
 ## Configuration
 
-```.json
+```json
 {
     resolve: `gatsby-plugin-intl-url`,
     options: {
